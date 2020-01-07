@@ -2,6 +2,9 @@ package com.courses;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.topics.Topics;
 
 @Entity
 public class Course {
@@ -9,15 +12,18 @@ public class Course {
 	private int id;
 	private String name;
 	private String Description;
-	
+	@ManyToOne
+	private Topics top;
 	public Course() {
 		
 	}
-	public Course(int id, String name, String description) {
+	
+	public Course(int id, String name, String description, int topicId) {
 		super();
 		this.id = id;
 		this.name = name;
 		Description = description;
+		this.top= new Topics(topicId, "", "");
 	}
 	
 	public int getId() {
@@ -38,5 +44,10 @@ public class Course {
 	public void setDescription(String description) {
 		Description = description;
 	}
-
+	public Topics getTop() {
+		return top;
+	}
+	public void setTop(Topics top) {
+		this.top = top;
+	}
 }

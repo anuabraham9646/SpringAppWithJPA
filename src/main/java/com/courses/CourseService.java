@@ -19,9 +19,9 @@ public class CourseService {
 	@Autowired
 	private CourseRepository repo;
 			
-	public List<Course> getAllCourse(){
+	public List<Course> getAllCourse(int id){
 		
-		return (List<Course>) repo.findAll();
+		return (List<Course>) repo.findByTopId(id);
 	}
 	
 	public Course getById(int id) {
@@ -36,7 +36,7 @@ public class CourseService {
 		
 	}
 
-	public void updateCourse(Course course, int id) {
+	public void updateCourse(Course course) {
 		repo.save(course);
 		
 	}
