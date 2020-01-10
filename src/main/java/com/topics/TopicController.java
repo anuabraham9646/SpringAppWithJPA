@@ -20,22 +20,24 @@ public class TopicController {
 	public List<Topics> getAll(){
 		return serv.getAllTopics();
 	}
+
 	@RequestMapping("/topics/{id}")
 	public Topics getById(@PathVariable int id) {
 		return serv.getById(id);
 	}
+
 	@RequestMapping(method=RequestMethod.POST,value="/topics")
-	public void addTopics(@RequestBody Topics topic) {
+	public void addTopics(@RequestBody Topics topic){
 		serv.addTopic(topic);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT,value="/topics/{id}")
-	public void updateTopics(@RequestBody Topics topic, @PathVariable int id) {
+	public void updateTopics(@RequestBody Topics topic, @PathVariable int id){
 		serv.updateTopic(topic,id);
 	}
+
 	@DeleteMapping(value="/topics/{id}")
-	public void deleteTopics(@PathVariable int id) {
+	public void deleteTopics(@PathVariable int id){
 		serv.deleteTopic(id);
 	}
-	
 }
