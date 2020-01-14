@@ -18,6 +18,13 @@ public class Course {
 		
 	}
 	
+	public Course(int id, String name, String description) {
+		super();
+		this.id = id;
+		this.name = name;
+		Description = description;
+	}
+	
 	public Course(int id, String name, String description, int topicId) {
 		super();
 		this.id = id;
@@ -50,4 +57,5 @@ public class Course {
 	public void setTop(Topics top) {
 		this.top = top;
 	}
+
 }
