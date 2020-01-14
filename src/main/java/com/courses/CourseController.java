@@ -22,9 +22,13 @@ public class CourseController {
 	public List<Course> getAll(@PathVariable int id){
 		return serv.getAllCourse(id);
 	}
-	@RequestMapping("/topics/{topicId}course/{id}")
-	public Course getById(@PathVariable int id) {
-		return serv.getById(id);
+	
+	@RequestMapping(method=RequestMethod.GET,value="/topics/{topicId}/course/{id}")
+	public Course getById(@PathVariable("id") String id) {
+		System.out.println("inside cont");
+		Course c= serv.getById(Integer.parseInt(id));
+		System.out.println("vapis inside cont"+ c.getId());
+		return c;
 	}
 	@RequestMapping(method=RequestMethod.POST,value="/topics/{topicId}/course")
 	public void addCourse(@RequestBody Course course ,@PathVariable int topicId) {
@@ -37,7 +41,7 @@ public class CourseController {
 		course.setTop(new Topics(topicId,"",""));
 		serv.updateCourse(course);
 	}
-	@DeleteMapping(value="/topics/{topicId}/course/{id}")
+	@RequestMapping(method=RequestMethod.DELETE,value="/topics/{topicId}/course/{id}")
 	public void deleteTopics(@PathVariable int id) {
 		serv.deleteCourse(id);
 	}

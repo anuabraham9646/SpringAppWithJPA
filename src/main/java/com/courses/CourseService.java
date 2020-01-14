@@ -26,7 +26,7 @@ public class CourseService {
 	
 	public Course getById(int id) {
 		
-		//return topics.stream().filter(t -> t.getId()== id).findFirst().get();
+		System.out.println("inside course service"+repo.findById(id).get().getId());
 		return repo.findById(id).orElse(null);
 	}
 
